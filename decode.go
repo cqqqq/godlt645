@@ -131,11 +131,12 @@ func DecodeRead(buffer *bytes.Buffer, size int, ver ProtoVersion) InformationEle
 	case Ver1997:
 		dataTypeLen = 2
 	}
+	data.ver = ver
 	var dataType = make([]byte, dataTypeLen)
 	dataValue := make([]byte, size-dataTypeLen)
 	read(&dataValue)
 	read(&dataType)
-	fmt.Println("dataType", dataValue)
+	fmt.Println("dataValue", dataValue)
 	fmt.Println("dataType", dataType)
 
 	for i, j := 0, len(dataType)-1; i < j; i, j = i+1, j-1 {
